@@ -15,11 +15,11 @@ function Login() {
         <div className="row d-flex justify-content-center">
           <div className="col-lg-8 col-md-8 col-sm-12 col-12">
             <div className="card">
-              <h4 className="text-center font-bold text-primaryColor mb-4">
+              <h4 className="text-center font-bold mb-4">
                 Sign in to your account
               </h4>
               <form onSubmit={handleSubmit}>
-                <div className="input-group mt-4">
+                <div className="mt-4">
                   <input
                     required
                     value={formData.email}
@@ -31,11 +31,11 @@ function Login() {
                     }}
                     name="email"
                     type="email"
-                    className="form-control"
+                    className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded-md dark:border-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100"
                     placeholder="Email/Number"
                   />
                 </div>
-                <div className="input-group mt-4">
+                <div className="mt-4">
                   <input
                     required
                     value={formData.password}
@@ -47,22 +47,22 @@ function Login() {
                     }}
                     name="password"
                     type="password"
-                    className="form-control"
+                    className="block w-full px-4 py-2 text-gray-900 bg-white border border-gray-300 rounded-md dark:border-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:text-gray-100"
                     placeholder="Password"
                   />
                 </div>
                 <div className="d-flex justify-content-between">
                   <Link href="/signup">
-                    <div className="font-demi grey-hover text-primaryColor mt-4 py-3 px-3">
-                      Become a member <span className="ml-2 text-secondaryColor">Signup</span>
+                    <div className=" mt-4 py-3 px-3 hover-click">
+                      Become a member <span className="ml-2">Signup</span>
                     </div>
                   </Link>
-                  <p className="text-secondaryColor font-demi grey-hover mt-4 py-3 px-3">
+                  <p className=" font-demi  mt-4 py-3 px-3 hover-click">
                     Forgot Password
                   </p>
                 </div>
                 <div className="text-center mt-5">
-                  <button className="text-white bg-secondaryColor font-demi btn-blue" type="submit">
+                  <button className="" type="submit">
                     Signin
                   </button>
                 </div>

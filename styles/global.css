@@ -47,11 +47,15 @@ a {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: var(--primaryColor);
-  background-color: rgba(31, 41, 55, var(--tw-bg-opacity)) !important;
+  /* color: var(--primaryColor);
+  background-color: rgba(31, 41, 55, var(--tw-bg-opacity)) !important; */
   background-clip: padding-box;
   border: none !important;
   border-radius: 10px;
+}
+
+.hover-click {
+  cursor: pointer;
 }
 
 .grey-hover {
