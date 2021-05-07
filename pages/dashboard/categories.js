@@ -4,7 +4,7 @@ function categories() {
   return (
     <>
       <Sidebar />
-      <div className="home-page-wrapper">
+      <div className="home-page-wrapper mt-5">
         <div class="container mx-auto px-3">
           <div className="divide-y divide-gray-200 dark:divide-gray-700">
             <div className="pt-6 pb-8 space-y-2 md:space-y-5">
