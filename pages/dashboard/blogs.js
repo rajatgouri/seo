@@ -71,6 +71,12 @@ function blogs() {
                         Lorem Ipsum passages, and more recently with desktop publishing software
                         like Aldus PageMaker including versions of Lorem Ipsum.
                       </p>
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+                        Edit
+                      </button>
+                      <button className="ml-4 bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded">
+                        Delete
+                      </button>
                     </div>
                   </div>
                 </div>
