@@ -12,30 +12,106 @@ function users() {
                 Users
               </h1>
             </div>
-            <div className="container py-12 flex justify-center">
-              <table class="styled-table">
+            <div className="container py-12 flex justify-centery">
+              <table class="styled-table w-full">
                 <thead className="bg-blue-500">
                   <tr>
                     <th scope="col">S.No</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Mail</th>
+                    <th scope="col" className="small-hidden">Mail</th>
+                    <th scope="col">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th scope="row">1</th>
                     <td>John Doe</td>
-                    <td>johndoe@gmail.com</td>
+                    <td className="small-hidden">johndoe@gmail.com</td>
+                    <td>
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+                        Edit
+                      </button>
+                    </td>
                   </tr>
                   <tr>
                     <th scope="row">2</th>
                     <td>GmPatil</td>
-                    <td>gmpatil@gmail.com</td>
+                    <td className="small-hidden">gmpatil@gmail.com</td>
+                    <td>
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+                        Edit
+                      </button>
+                    </td>
                   </tr>
                   <tr>
                     <th scope="row">3</th>
                     <td>Lorem Ipsum</td>
-                    <td>loremipsum@gmail.com</td>
+                    <td className="small-hidden">loremipsum@gmail.com</td>
+                    <td>
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+                        Edit
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <td>John Doe</td>
+                    <td className="small-hidden">johndoe@gmail.com</td>
+                    <td>
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+                        Edit
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>GmPatil</td>
+                    <td className="small-hidden">gmpatil@gmail.com</td>
+                    <td>
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+                        Edit
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">6</th>
+                    <td>Lorem Ipsum</td>
+                    <td className="small-hidden">loremipsum@gmail.com</td>
+                    <td>
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+                        Edit
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">7</th>
+                    <td>John Doe</td>
+                    <td className="small-hidden">johndoe@gmail.com</td>
+                    <td>
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+                        Edit
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">8</th>
+                    <td>GmPatil</td>
+                    <td className="small-hidden">gmpatil@gmail.com</td>
+                    <td>
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+                        Edit
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">9</th>
+                    <td>Lorem Ipsum</td>
+                    <td className="small-hidden">loremipsum@gmail.com</td>
+                    <td>
+                      <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+                        Edit
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
               </table>

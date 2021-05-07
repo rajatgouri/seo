@@ -13,16 +13,9 @@ function categories() {
               </h1>
             </div>
             <div className="container py-12">
-              <div className="flex -m-4">
+              <div className="-m-4">
                 <div className="p-4 md:w-1/2 md" style={{ maxWidth: '544px' }}>
                   <div className="h-full border-2 border-gray-200 border-opacity-60 dark:border-gray-700 rounded-md overflow-hidden">
-                    <img
-                      alt="blogs"
-                      src="https://source.unsplash.com/random/500x500"
-                      className="lg:h-48 md:h-36 object-cover object-center"
-                      width={544}
-                      height={306}
-                    />
                     <div className="p-6">
                       <h2 className="text-2xl font-bold leading-8 tracking-tight mb-3">
                         Category Name
@@ -42,13 +35,6 @@ function categories() {
 
                 <div className="p-4 md:w-1/2 md" style={{ maxWidth: '544px' }}>
                   <div className="h-full border-2 border-gray-200 border-opacity-60 dark:border-gray-700 rounded-md overflow-hidden">
-                    <img
-                      alt="blogs"
-                      src="https://source.unsplash.com/random/500x500"
-                      className="lg:h-48 md:h-36 object-cover object-center"
-                      width={544}
-                      height={306}
-                    />
                     <div className="p-6">
                       <h2 className="text-2xl font-bold leading-8 tracking-tight mb-3">
                         Category Name
@@ -67,13 +53,6 @@ function categories() {
                 </div>
                 <div className="p-4 md:w-1/2 md" style={{ maxWidth: '544px' }}>
                   <div className="h-full border-2 border-gray-200 border-opacity-60 dark:border-gray-700 rounded-md overflow-hidden">
-                    <img
-                      alt="blogs"
-                      src="https://source.unsplash.com/random/500x500"
-                      className="lg:h-48 md:h-36 object-cover object-center"
-                      width={544}
-                      height={306}
-                    />
                     <div className="p-6">
                       <h2 className="text-2xl font-bold leading-8 tracking-tight mb-3">
                         Category Name
@@ -92,13 +71,6 @@ function categories() {
                 </div>
                 <div className="p-4 md:w-1/2 md" style={{ maxWidth: '544px' }}>
                   <div className="h-full border-2 border-gray-200 border-opacity-60 dark:border-gray-700 rounded-md overflow-hidden">
-                    <img
-                      alt="blogs"
-                      src="https://source.unsplash.com/random/500x500"
-                      className="lg:h-48 md:h-36 object-cover object-center"
-                      width={544}
-                      height={306}
-                    />
                     <div className="p-6">
                       <h2 className="text-2xl font-bold leading-8 tracking-tight mb-3">
                         Category Name

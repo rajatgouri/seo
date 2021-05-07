@@ -10,9 +10,9 @@ function Sidebar() {
       document.querySelector('.home-page-wrapper').style.marginLeft = '0px'
       setShouldToggle(false)
     } else {
-      document.getElementById('navSide').style.width = '264px'
-      document.getElementById('toggler').style.width = '264px'
-      document.querySelector('.home-page-wrapper').style.marginLeft = '270px'
+      document.getElementById('navSide').style.width = '240px'
+      document.getElementById('toggler').style.width = '240px'
+      document.querySelector('.home-page-wrapper').style.marginLeft = '285px'
       setShouldToggle(true)
     }
   }

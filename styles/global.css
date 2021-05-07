@@ -102,7 +102,7 @@ select:-webkit-autofill:focus {
 .nav-left-sidebar {
   transition: 0.5s; 
   position: fixed;
-  width: 264px;
+  width: 247px;
   height: 100%;
   top: 25px;
   overflow: auto;
@@ -111,7 +111,7 @@ select:-webkit-autofill:focus {
 .side-toggler {
   position: fixed;
   top: 0px;
-  width: 264px;
+  width: 247px;
   background: #1e2126 !important;
   color: white;
   transition: all 0.4s ease-in-out;
@@ -176,24 +176,18 @@ select:-webkit-autofill:focus {
   top: 10rem;
 }
 @media(max-width: 992px){
-  .side-toggler{
-    display: none;
-  }
-  .nav-left-sidebar{
-    display: none;
-  }
 }
 .home-page-wrapper {
   position: relative;
   left: 0;
-  margin-left: 270px;
+  margin-left: 285px;
   min-height: 870px !important;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 @media only screen and (max-width: 992px) {
   .home-page-wrapper {
-    margin-left: 0px;
+    margin-left: 285px;
   }
 }
 
@@ -203,7 +197,6 @@ select:-webkit-autofill:focus {
   border-collapse: collapse;
   margin: 25px 0;
   font-size: 0.9em;
-  min-width: 500px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -219,4 +212,10 @@ select:-webkit-autofill:focus {
 
 .styled-table tbody tr {
   border-bottom: 1px solid #dddddd;
+}
+
+@media only screen and (max-width: 500px) {
+  .small-hidden{
+    display: none;
+  }
 }
