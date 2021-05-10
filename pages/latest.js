@@ -6,6 +6,7 @@ import { PageSeo } from '@/components/SEO'
 const MAX_DISPLAY = 5
 const postDateTemplate = { year: 'numeric', month: 'long', day: 'numeric' }
 import { getAllFilesFrontMatter } from '@/lib/mdx'
+import Search from '@/components/Search'
 
 export async function getStaticProps() {
     const posts = await getAllFilesFrontMatter('blog')
@@ -22,6 +23,7 @@ const latest = ({ posts }) => {
         description={siteMetadata.description}
         url={`${siteMetadata.siteUrl}/latest`}
       />
+      <Search/>
         <div>
             <div className="divide-y divide-gray-200 dark:divide-gray-700">
                 <div className="pt-6 pb-8 space-y-2 md:space-y-5">
