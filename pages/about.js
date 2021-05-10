@@ -7,7 +7,7 @@ export default function About() {
     <>
       <PageSeo
         title={`About - ${siteMetadata.author}`}
-        description={`About me - ${siteMetadata.author}`}
+        description={`About - ${siteMetadata.author}`}
         url={`${siteMetadata.siteUrl}/about`}
       />
       <Search/>
@@ -17,6 +17,7 @@ export default function About() {
             About
           </h1>
         </div>
+
         <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
           <div className="flex flex-col items-center pt-8 space-x-2">
             <img src={siteMetadata.image} alt="avatar" className="w-48 h-48 rounded-full" />

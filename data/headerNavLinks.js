@@ -11,7 +11,7 @@
 
 const headerNavLinks = [
   { href: '/latest', title: 'Latest' },
-  { href: '/tags', title: 'Categories' },
+  { href: '/categories', title: 'Categories' },
   { href: '/about', title: 'About' }
 ]
 

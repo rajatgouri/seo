@@ -148,7 +148,6 @@ module.exports = {
   },
   variants: {
     typography: ['dark','hover'],
-    // textColor : ['hover']
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 }
