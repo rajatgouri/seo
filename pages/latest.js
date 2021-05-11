@@ -2,7 +2,7 @@ import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { PageSeo } from '@/components/SEO'
-
+import google from '../public/static/images/google.png'
 const MAX_DISPLAY = 5
 const postDateTemplate = { year: 'numeric', month: 'long', day: 'numeric' }
 import { getAllFilesFrontMatter } from '@/lib/mdx'
@@ -48,6 +48,17 @@ const latest = ({ posts }) => {
                                                     {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
                                                 </time>
                                             </dd>
+
+                                            <img src={google} className="img-post shadow-lg"/>
+                                            <style jsx>
+                                                {`
+                                                .img-post{
+                                                    border-radius : 15px;
+                                                    margin-top : 15px;
+                                                    width: 90%
+                                                }
+                                                `}
+                                            </style>
                                         </dl>
                                         <div className="space-y-5 xl:col-span-3">
                                             <div className="space-y-6">
