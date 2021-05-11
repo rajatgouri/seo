@@ -6,21 +6,11 @@ import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
 const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme('class')
-
-
-  
-
-  // When mounted on client, now we can show the UI
-
   
 
   function toggleTheme(){
     setMounted(!mounted)
-    if(!mounted){
-      setTheme('light')
-    }else{
-      setTheme('dark')
-    }
+    !mounted ? setTheme('light') : setTheme('dark')
   }
 
   return (
