@@ -7,6 +7,7 @@ import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 
 const LayoutWrapper = ({ children }) => {
+  console.log(children)
   return (
     <SectionContainer>
       <div className="flex flex-col justify-between h-screen">
