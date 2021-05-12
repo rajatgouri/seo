@@ -14,7 +14,7 @@ const LayoutWrapper = ({ children }) => {
   // set auth to false to user mode
   // this will change after auth 
 
-  const [auth, setAuth] = useState(true)
+  const [auth, setAuth] = useState(false)
 
   return (
     <SectionContainer>

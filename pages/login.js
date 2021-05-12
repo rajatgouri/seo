@@ -1,14 +1,9 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
-import { PageSeo } from '@/components/SEO'
-import siteMetadata from '@/data/siteMetadata'
-
-import style from '../styles/login/style.module.css'
 
 function Login() {
   const initialState = { email: '', password: '' }
   const [formData, setformData] = useState(initialState)
-
   const handleSubmit = (e) => {
     e.preventDefault()
     setformData(initialState)
@@ -16,36 +11,63 @@ function Login() {
 
   return (
     <>
-      <PageSeo
-        title={`Login - ${siteMetadata.author}`}
-        description={'Login -' + siteMetadata.description}
-        url={siteMetadata.siteUrl}
-      />
-      <div className={style.wraper}>
-        <div className={style.innerWraper}>
-          <div className={style.header}>
-            <img src="https://img.icons8.com/cute-clipart/64/000000/user-male.png" />
-            <b>Login</b>
-            <p></p>
-          </div>
-          <div className={style.form}>
-            <form>
-              <div className={style.row}>
-                <label htmlFor="username">Username</label>
-                <input type="text" placeholder="demo@example.com"/>
-              </div>
-              <div className={style.row}>
-                <label htmlFor="username">Password</label>
-                <input type="password" placeholder="*****"/>
-              </div>
-
-              <div className={style.other}>
-                <p>Forgot your password ?</p>
-                <Link href="/signup"><p>Register</p></Link>
-              </div>
-
-              <button type="submit" className={style.btn}>Login</button>
-            </form>
+      <div className="container my-5">
+        <div className="row d-flex justify-content-center">
+          <div className="col-lg-8 col-md-8 col-sm-12 col-12">
+            <div className="card">
+              <h4 className="text-center font-bold  mb-4">
+                Sign in to your account
+              </h4>
+              <form onSubmit={handleSubmit}>
+                <div className="input-group mt-4">
+                  <input
+                    required
+                    value={formData.email}
+                    onChange={(e) => {
+                      setformData({
+                        ...formData,
+                        [e.target.name]: e.target.value,
+                      })
+                    }}
+                    name="email"
+                    type="email"
+                    className="form-control"
+                    placeholder="Email/Number"
+                  />
+                </div>
+                <div className="input-group mt-4">
+                  <input
+                    required
+                    value={formData.password}
+                    onChange={(e) => {
+                      setformData({
+                        ...formData,
+                        [e.target.name]: e.target.value,
+                      })
+                    }}
+                    name="password"
+                    type="password"
+                    className="form-control"
+                    placeholder="Password"
+                  />
+                </div>
+                <div className="d-flex justify-content-between">
+                  <Link href="/signup">
+                    <div className="font-demi grey-hover  mt-4 py-3 px-3">
+                      Become a member <span className="ml-2 ">Signup</span>
+                    </div>
+                  </Link>
+                  <p className=" font-demi grey-hover mt-4 py-3 px-3">
+                    Forgot Password
+                  </p>
+                </div>
+                <div className="text-center mt-5">
+                  <button className=" bg-secondaryColor font-demi btn-blue" type="submit">
+                    Signin
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
