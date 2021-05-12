@@ -41,7 +41,7 @@ function Login() {
 
               <div className={style.other}>
                 <p>Forgot your password ?</p>
-                <p>Register</p>
+                <Link href="/signup"><p>Register</p></Link>
               </div>
 
               <button type="submit" className={style.btn}>Login</button>

@@ -1,10 +1,11 @@
 import headerNavLinks from '@/data/headerNavLinks'
 import Link from './Link'
-
+import Mobile from './MobileNav'
 
 const DesktopNav = () => {
   return (
     <>
+     
       <div className="hidden sm:block">
         {headerNavLinks.map((link) => (
           <Link
@@ -18,6 +19,7 @@ const DesktopNav = () => {
           </Link>
         ))}
       </div>
+      <Mobile/>
     </>
   )
 }
