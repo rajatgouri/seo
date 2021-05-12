@@ -3,14 +3,18 @@ import DesktopNav from './DesktopNav'
 import Link from './Link'
 import SectionContainer from './SectionContainer'
 import Footer from './Footer'
-import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import { useState } from 'react'
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOutAlt, faUserEdit } from "@fortawesome/free-solid-svg-icons"
 
 
 const LayoutWrapper = ({ children }) => {
-  const[auth,setAuth] = useState(true)
+
+  // set auth to false to user mode
+  // this will change after auth 
+
+  const [auth, setAuth] = useState(true)
 
   return (
     <SectionContainer>
@@ -27,11 +31,11 @@ const LayoutWrapper = ({ children }) => {
           </div>
           <div className="flex items-center text-base leading-5">
             {
-              auth ?  <Profile/> : <DesktopNav />
+              auth ? <Profile /> : <DesktopNav />
             }
-           {
-             auth ? true :  <ThemeSwitch />
-           }
+            {
+              auth ? true : <ThemeSwitch />
+            }
           </div>
         </header>
         <main className="mb-auto">{children}</main>
@@ -41,11 +45,46 @@ const LayoutWrapper = ({ children }) => {
   )
 }
 
-const Profile = () =>{
-  return(
-    <div>
-      <img src="https://tusd.tusdemo.net/files/95ddf64eaffaeb8e05fdd1e3a3af7b9c+gyeJfvYENIK_CtrXazivYd0QeRX0qbYZ.FBvp5l9hivHxe617Gxv85ZHzG8T8gCKuHqjkJ5vbVc4heEM3FOTNkEt8k0TeYiNHwwVxeWWMP8AZBpIEPuYVz.QTTVvkAAn" className="object-cover h-16 w-16 rounded-full border-blue-200 cursor-pointer hover:border-blue-500 border-2 p-1 hover:shadow-lg"/>
+const Profile = () => {
+  const [open, setOpen] = useState(false)
 
+
+
+  return (
+    <div style={{ position: 'absolute' }}>
+      <img src="https://source.unsplash.com/random" className="object-cover h-16 w-16 rounded-full border-blue-200 cursor-pointer p-1 hover:shadow-xl" onClick={()=>{setOpen(!open);}}/>
+      {
+        open ?  <Model /> : null
+      }
+    </div>
+  )
+}
+
+const Model = () => {
+  return (
+    <div className="model transition rounded-md shadow-lg">
+      <ul>
+      <Link href="/admin/dashboard"><li className="hover:bg-blue-200"><FontAwesomeIcon icon={faSignOutAlt} />Dashboard</li></Link>
+        <li className="hover:bg-blue-200"><FontAwesomeIcon icon={faUserEdit} />	&nbsp; Profile</li>
+        <li className="hover:bg-blue-200"><FontAwesomeIcon icon={faSignOutAlt} />	&nbsp;&nbsp; Logout</li>
+      </ul>
+      <style jsx>
+        {`
+         .model{
+          height : 100px;
+          width : 130px;
+          background : #fff;
+          position : absolute;
+          left : -30px;
+          top : 65px;
+         }
+         .model li{
+           margin-top : 3px;
+           cursor : pointer;
+           padding : 5px 10px;
+         }
+        `}
+      </style>
     </div>
   )
 }

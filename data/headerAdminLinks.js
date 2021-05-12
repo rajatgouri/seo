@@ -1,12 +1,22 @@
 
-
 // amdin options or menu
 
 const adminLink = [
-    { href: "/admin/dashboard", title: "Dashboard" },
-    { href: "/admin/blogs", title: "Blogs" },
-    { href: "/admin/categories", title: "Categories" },
-    { href: "/admin/logout", title: "Logout" },
+    {
+        href: "/admin/dashboard",
+        icon: "faUserShield",
+        title: "Dashboard"
+    },
+    {
+        href: "/admin/blogs", 
+        icon: "faBlog",
+        title: "Blogs"
+    },
+    {
+        href: "/admin/categories", 
+        icon: "faFilter",
+        title: "Categories"
+    },
 ]
 
 
