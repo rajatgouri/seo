@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserShield, faBlog, faFilter, faArrowLeft,faArrowRight } from "@fortawesome/free-solid-svg-icons"
+import { faUserShield, faBlog, faFilter, faArrowLeft,faArrowRight, faBars, faAlignLeft, faSignOutAlt } from "@fortawesome/free-solid-svg-icons"
 import Link from '@/components/Link'
 
 const SideNav = () => {
@@ -10,10 +10,10 @@ const SideNav = () => {
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu transition'}>
                 <ul className="nav-menu-items" onClick={() => setSidebar(!sidebar)}>
                    <div className="flex justify-center align-center">
-                   <h1 className="text-white font-bold">User Name</h1>
+                   <h1 className="text-white font-bold " style={{lineHeight: "80px"}}>User Name</h1>
                     {
-                        sidebar ?   <FontAwesomeIcon style={{fontSize:'20px',margin:'28px 0px',transform:'translateX(50px)'}} icon={faArrowLeft} color="#fff"/> :
-                        <FontAwesomeIcon style={{fontSize:'20px',margin:'28px 0px',transform:'translateX(50px)'}} icon={faArrowRight} color="#fff"/>  
+                        sidebar ?   <FontAwesomeIcon style={{fontSize:'20px',margin:'28px 0px',transform:'translateX(50px)'}} icon={faBars} color="#fff"/> :
+                        <FontAwesomeIcon style={{fontSize:'20px',margin:'28px 0px',transform:'translateX(50px)'}} icon={faBars} color="#fff"/>  
                     }
                    </div>
                     <li className={sidebar ? 'nav-Text-Active' : 'nav-text transition'}>
@@ -30,8 +30,14 @@ const SideNav = () => {
                     </li>
                     <li className={sidebar ? 'nav-Text-Active' : 'nav-text transition'}>
                         <Link href="/">
-                            <FontAwesomeIcon icon={faFilter} color="#fff" />
+                            <FontAwesomeIcon icon={faAlignLeft} color="#fff" />
                             <span className={sidebar ? 'spann-Active' : 'spann transition'}>Categories</span>
+                        </Link>
+                    </li>
+                    <li className={sidebar ? 'nav-Text-Active' : 'nav-text transition'}>
+                        <Link href="/">
+                            <FontAwesomeIcon icon={faSignOutAlt} color="#fff" />
+                            <span className={sidebar ? 'spann-Active' : 'spann transition'}>Logout</span>
                         </Link>
                     </li>
                 </ul>

@@ -59,6 +59,11 @@ a {
   transition: all 0.3s ease-in;
 }
 
+.bg-dark {
+  --tw-bg-opacity: 1;
+  background-color: #060B26;
+ }
+
 .btn-blue {
   padding: 0px 24px;
   border: 1px solid transparent;

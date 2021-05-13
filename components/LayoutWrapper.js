@@ -16,24 +16,25 @@ const LayoutWrapper = ({ children }) => {
   // set auth to false to user mode
   // this will change after auth 
 
-  const [auth, setAuth] = useState(true)
+  const [auth, setAuth] = useState(false)
+  const [admin, setAdmin] = useState(false)
 
   return (
     <SectionContainer>
       <div className="flex flex-col justify-between h-screen">
-        <header className={auth ? 'custome-styling-admin-panel' : 'flex items-center justify-between p-10'}>
+        <header className={auth && admin ? 'custome-styling-admin-panel' : 'flex items-center justify-between p-10'}>
           {
-            auth ? <NewAdminBar /> : <UserPanel />
+            auth && admin ? <NewAdminBar /> : <UserPanel />
           }
           {
-            auth ? <Profile /> : false
+            auth && admin ? <Profile /> : false
           }
           <div className="flex items-center text-base leading-5">
             {
-              auth ? false : <DesktopNav />
+              auth && admin ? false : <DesktopNav />
             }
             {
-              auth ? false : <ThemeSwitch />
+              auth && admin ? false : <ThemeSwitch />
             }
           </div>
           <style jsx>
@@ -43,7 +44,7 @@ const LayoutWrapper = ({ children }) => {
                top:0px;
                left:0px;
                width:100%;
-               line-height:80px;
+               line-height:55px;
                height:80px !important;
                display:flex; 
                justify-content: flex-end;
@@ -66,10 +67,10 @@ const Profile = () => {
 
   return (
     <div style={{ position: 'absolute', padding: '6px 30px' }}>
-      <img src="https://source.unsplash.com/random" className="object-cover h-16 w-16 rounded-full border-blue-200 cursor-pointer p-1 hover:shadow-xl" onClick={() => { setOpen(!open); }} />
+      {/* <img src="https://source.unsplash.com/random" className="object-cover h-16 w-16 rounded-full border-blue-200 cursor-pointer p-1 hover:shadow-xl" onClick={() => { setOpen(!open); }} />
       {
         open ? <Model /> : null
-      }
+      } */}
     </div>
   )
 }
@@ -97,6 +98,7 @@ const Model = () => {
            cursor : pointer;
            padding : 5px 10px;
          }
+         
         `}
       </style>
     </div>
@@ -120,7 +122,7 @@ const UserPanel = () => {
 
 const NewAdminBar = () => {
   return (
-    <div className="w-full bg-indigo-900 pl-3">
+    <div className="w-full bg-dark pl-3">
       <SideNav />
     </div>
   )
