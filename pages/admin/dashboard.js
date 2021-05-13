@@ -34,8 +34,9 @@ function Dashboard() {
               return (
                 <>
                   <li key={1} className="nav-text">
-                    <Link href={i.href}>
-                      <FontAwesomeIcon icon={i.icon} />
+
+                      <Link href={i.href}>
+                      <FontAwesomeIcon icon={faTimes} color="#fff" />
                       <span className="spann">{i.title}</span>
                     </Link>
                   </li>

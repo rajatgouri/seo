@@ -15,6 +15,7 @@ export default function App({ Component, pageProps }) {
       <MDXProvider components={MDXComponents}>
         <Head>
           <meta content="width=device-width, initial-scale=1" name="viewport" />
+          <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
         </Head>
         <DefaultSeo {...SEO} />
         <LayoutWrapper>
