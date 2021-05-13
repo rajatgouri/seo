@@ -20,7 +20,7 @@
     justify-content: center;
     position: fixed;
     top: 0;
-    left: -100%;
+    left: -14%;
     transition: 850ms;
   }
   
@@ -30,12 +30,14 @@
   }
   
   .nav-text {
+    width: 32%;
     display: flex;
     justify-content: start;
     align-items: center;
     padding: 8px 0px 8px 16px;
     list-style: none;
     height: 60px;
+    transform: translateX(171px);
   }
   
   .nav-text a {
@@ -69,4 +71,5 @@
   
 .spann{
     margin-left: 16px;
+    display: none;
   }
