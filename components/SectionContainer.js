@@ -5,11 +5,11 @@ export default function SectionContainer({ children }) {
   
   // set auth to false to user mode
   // this will change after auth 
-  const [admin, setAdmin] = useState(false);
+  const [admin, setAdmin] = useState(true);
   
   return (
     <>
-      <div className={admin ? "px-10 cusstom" : "cusstom px-4 mx-auto xl:max-w-5xl xl:px-0 "}>
+      <div className={admin ? "px-10 cusstom" : "cusstom px-1 sm:px-1 md:px-2 mx-auto xl:px-14"}>
         {children}
       </div>
     </>

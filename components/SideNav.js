@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserShield, faBlog, faFilter, faArrowLeft,faArrowRight, faBars, faAlignLeft, faSignOutAlt } from "@fortawesome/free-solid-svg-icons"
+import { faUserShield, faBlog, faBars, faAlignLeft, faSignOutAlt } from "@fortawesome/free-solid-svg-icons"
 import Link from '@/components/Link'
 
 const SideNav = () => {
@@ -23,19 +23,19 @@ const SideNav = () => {
                         </Link>
                     </li>
                     <li className={sidebar ? 'nav-Text-Active' : 'nav-text transition'}>
-                        <Link href="/">
+                        <Link href="/admin/blog">
                             <FontAwesomeIcon icon={faBlog} color="#fff" />
                             <span className={sidebar ? 'spann-Active' : 'spann transition'}>Blogs</span>
                         </Link>
                     </li>
                     <li className={sidebar ? 'nav-Text-Active' : 'nav-text transition'}>
-                        <Link href="/">
+                        <Link href="/admin/categories">
                             <FontAwesomeIcon icon={faAlignLeft} color="#fff" />
                             <span className={sidebar ? 'spann-Active' : 'spann transition'}>Categories</span>
                         </Link>
                     </li>
                     <li className={sidebar ? 'nav-Text-Active' : 'nav-text transition'}>
-                        <Link href="/">
+                        <Link href="/admin/Logout">
                             <FontAwesomeIcon icon={faSignOutAlt} color="#fff" />
                             <span className={sidebar ? 'spann-Active' : 'spann transition'}>Logout</span>
                         </Link>

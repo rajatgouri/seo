@@ -63,6 +63,19 @@ a {
   --tw-bg-opacity: 1;
   background-color: #060B26;
  }
+.arunCard{
+  background: radial-gradient(46.28% 66.31% at 66.95% 58.35%, rgb(230, 230, 247) 0%, rgb(231, 237, 250) 50%, rgb(233, 251, 250) 100%);
+}
+.bg-arun{
+  background: linear-gradient(49.21deg, rgba(127, 127, 213, 0.2) 19.87%, rgba(134, 168, 231, 0.2) 58.46%, rgba(145, 234, 228, 0.2) 97.05%)
+}
+.bg-arun:hover{
+  background: radial-gradient(46.28% 66.31% at 66.95% 58.35%, rgb(230, 230, 247) 0%, rgb(231, 237, 250) 50%, rgb(233, 251, 250) 100%);
+}
+.arunCard:hover{
+  border: 1px solid rgb(28, 28, 225);
+  box-shadow: rgb(210 210 249) 4px 4px 0px 0px;
+}
 
 .btn-blue {
   padding: 0px 24px;

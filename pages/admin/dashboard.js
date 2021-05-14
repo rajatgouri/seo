@@ -18,9 +18,9 @@ function Dashboard() {
 
       <div className="flex flex-wrap mx-6 overflow-hidden sm:-mx-1 md:-mx-4 lg:-mx-5 xl:-mx-5">
 
-        <div class="my-6 px-6 w-1/1 w-full overflow-hidden sm:my-2 sm:px-1 sm:w-1/2 md:my-4 md:px-4 md:w-1/2 lg:my-5 lg:px-5 lg:w-1/4 xl:my-5 xl:px-5 xl:w-1/4">
+        <div class="my-6 py-1 px-6 w-1/1 w-full overflow-hidden sm:my-2 sm:px-1 sm:w-1/2 md:my-4 md:px-4 md:w-1/2 lg:my-5 lg:px-5 lg:w-1/4 xl:my-5 xl:px-5 xl:w-1/4">
 
-          <div className="bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-4 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500">
+          <div className="bg-gray-100 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-4 border-solid bg-arun rounded-lg border-2 | flex justify-around cursor-pointer  | transition-colors duration-500 arunCard">
             <FontAwesomeIcon className="w-16 h-16 object-cover text-5xl" icon={faBlog}/>
             <div className="flex flex-col justify-center">
               <p className="text-gray-900 dark:text-gray-300 font-semibold">Blog</p>
@@ -32,7 +32,8 @@ function Dashboard() {
 
         <div className="my-6 px-6 w-1/1 w-full overflow-hidden sm:my-1 sm:px-1 sm:w-1/2 md:my-4 md:px-4 md:w-1/2 lg:my-5 lg:px-5 lg:w-1/4 xl:my-5 xl:px-5 xl:w-1/4">
 
-          <div className="bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-4 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500">
+          
+        <div className="bg-gray-100 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-4 border-solid bg-arun rounded-lg border-2 | flex justify-around cursor-pointer  | transition-colors duration-500 arunCard">
           <FontAwesomeIcon className="w-16 h-16 object-cover text-5xl" icon={faFilter}/>
             <div className="flex flex-col justify-center">
               <p className="text-gray-900 dark:text-gray-300 font-semibold">Categories</p>
@@ -43,7 +44,8 @@ function Dashboard() {
         </div>
 
         <div class="my-6 px-6 w-1/1 w-full overflow-hidden sm:my-1 sm:px-1 sm:w-1/2 md:my-4 md:px-4 md:w-1/2 lg:my-5 lg:px-5 lg:w-1/4 xl:my-5 xl:px-5 xl:w-1/4">
-          <div className="bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-4 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500">
+       
+        <div className="bg-gray-100 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-4 border-solid bg-arun rounded-lg border-2 | flex justify-around cursor-pointer  | transition-colors duration-500 arunCard">
           <FontAwesomeIcon className="w-16 h-16 object-cover text-5xl" icon={faEye}/>
             <div className="flex flex-col justify-center">
               <p className="text-gray-900 dark:text-gray-300 font-semibold">Total visits</p>
@@ -53,7 +55,8 @@ function Dashboard() {
         </div>
 
         <div class="my-6 px-6 w-1/1 w-full overflow-hidden sm:my-1 sm:px-1 sm:w-1/2 md:my-4 md:px-4 md:w-1/2 lg:my-5 lg:px-5 lg:w-1/4 xl:my-5 xl:px-5 xl:w-1/4">
-          <div className="bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-4 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500">
+          
+        <div className="bg-gray-100 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-4 border-solid bg-arun rounded-lg border-2 | flex justify-around cursor-pointer  | transition-colors duration-500 arunCard">
           <FontAwesomeIcon className="w-16 h-16 object-cover text-5xl" icon={faBoxOpen}/>
             <div className="flex flex-col justify-center">
               <p className="text-gray-900 dark:text-gray-300 font-semibold">Empty</p>
