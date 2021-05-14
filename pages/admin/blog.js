@@ -25,7 +25,7 @@ const Blog = () => {
                             </h2>
                             <p className="text-gray-500 sm:w-full dark:text-gray-400 mb-3 p-2">
                                 <span className="porse font-black text-black">Blog : </span>
-                                With the discovery of just a few hundred radioactive atoms in seabed deposits, researchers have confirmed that blast debris from a pair of stellar explosions swept across Earth within the past 10 million years—while hominids walked the planet. From this unlikely source material, the researchers have also found an important clue to the r-process, the nuclear reactions in stellar blasts that forge much of the heavier elements that make up Earth. The proportion of different atoms in the sediments suggests heavy elements were not solely forged in supernovae, the last-gasp explosions of dying stars—as astrophysicists have long thought. Instead, they hint that some heavy elements come from much rarer cosmic blasts called kilonovae, caused by the merger of two neutron stars.
+                                With the discovery of just a few hundred radioactive atoms in seabed deposits, researchers have confirmed that blast debris from a pair of stellar explosions swept across Earth.
                             </p>
                             <div className="py-2">
                                 <button className="border border-indigo-600 hover:text-blue-500 rounded py-1 px-10 transition arunCard">
@@ -55,7 +55,7 @@ const Blog = () => {
                             </h2>
                             <p className="text-gray-500 sm:w-full dark:text-gray-400 mb-3 p-2">
                                 <span className="porse font-black text-black">Blog : </span>
-                                Collaboration is the process of two or more people, entities or organizations working together to complete a task or achieve a goal. Collaboration is similar to cooperation. Most collaboration requires leadership, although the form of leadership can be social within a decentralized and egalitarian group. They typically include the content team (team lead, writers, editors), SEO experts, marketing team, product managers, and customer-facing teams. Collaboration allows all these diverse skill sets and knowledge reserves to be harnessed together to set a comprehensive content strategy that is designed to achieve business goals Consider the creation of a content marketing strategy. It requires multiple teams to provide input, make requests, or share information.
+                                Collaboration is the process of two or more people, entities or organizations working together to complete a task or achieve a goal. Collaboration is similar to cooperation.
                              </p>
                             <div className="py-2">
                                 <button className="border border-indigo-600 hover:text-blue-500 rounded py-1 px-10 transition arunCard">
