@@ -31,7 +31,7 @@ function Login() {
                     }}
                     name="email"
                     type="email"
-                    className="form-control"
+                    className="c form-control shadow-lg"
                     placeholder="Email/Number"
                   />
                 </div>
@@ -47,10 +47,17 @@ function Login() {
                     }}
                     name="password"
                     type="password"
-                    className="form-control"
+                    className="c form-control shadow-lg"
                     placeholder="Password"
                   />
                 </div>
+                <style jsx>
+                  {`
+                    .c{
+                      background-color : #eee !important;
+                    }
+                  `}
+                </style>
                 <div className="d-flex justify-content-between">
                   <Link href="/signup">
                     <div className="font-demi grey-hover  mt-4 py-3 px-3">

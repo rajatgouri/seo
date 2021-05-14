@@ -17,7 +17,7 @@ const SideNav = () => {
                     }
                    </div>
                     <li className={sidebar ? 'nav-Text-Active' : 'nav-text transition'}>
-                        <Link href="/">
+                        <Link href="/admin/dashboard">
                             <FontAwesomeIcon icon={faUserShield} color="#fff" />
                             <span className={sidebar ? 'spann-Active' : 'spann transition'}>Dashboard</span>
                         </Link>

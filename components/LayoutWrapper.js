@@ -17,11 +17,12 @@ const LayoutWrapper = ({ children }) => {
   // this will change after auth 
 
   const [auth, setAuth] = useState(false)
+
   const [admin, setAdmin] = useState(false)
 
   return (
     <SectionContainer>
-      <div className="flex flex-col justify-between h-screen">
+      <div>
         <header className={auth && admin ? 'custome-styling-admin-panel' : 'flex items-center justify-between p-10'}>
           {
             auth && admin ? <NewAdminBar /> : <UserPanel />
@@ -37,8 +38,13 @@ const LayoutWrapper = ({ children }) => {
               auth && admin ? false : <ThemeSwitch />
             }
           </div>
-          <style jsx>
-            {`
+
+        </header>
+        <main className={auth ? 'mb-auto max-w-full h-full c-main': 'mb-auto max-w-full h-full'}>
+          {children}
+        </main>
+        <style jsx>
+          {`
              .custome-styling-admin-panel{
               position:fixed;
                top:0px;
@@ -47,13 +53,17 @@ const LayoutWrapper = ({ children }) => {
                line-height:55px;
                height:80px !important;
                display:flex; 
-               justify-content: flex-end;
-               padidng : 5px 10px !important;
+               justify-content:flex-end;
+               padidng:5px 10px !important;
+             }
+             .c-main{
+               margin-top:100px;
+               margin-left:54px;
+               overflow-wrap:anywhere;
+               color:#000;
              }
              `}
-          </style>
-        </header>
-        <main className="mb-auto">{children}</main>
+        </style>
         <Footer />
       </div>
     </SectionContainer>

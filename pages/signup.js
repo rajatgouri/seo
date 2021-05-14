@@ -28,7 +28,7 @@ function Signup() {
                     required
                     name="fullName"
                     type="text"
-                    className="form-control"
+                    className="c form-control shadow-lg"
                     placeholder="Full Name"
                   />
                 </div>
@@ -44,7 +44,7 @@ function Signup() {
                     required
                     name="email"
                     type="email"
-                    className="form-control"
+                    className="c form-control shadow-lg"
                     placeholder="Email"
                   />
                 </div>
@@ -60,7 +60,7 @@ function Signup() {
                     required
                     name="phone"
                     type="text"
-                    className="form-control"
+                    className="c form-control shadow-lg"
                     placeholder="Phone Number"
                   />
                 </div>
@@ -76,10 +76,17 @@ function Signup() {
                     required
                     name="password"
                     type="password"
-                    className="form-control"
+                    className="c form-control shadow-lg"
                     placeholder="Password"
                   />
                 </div>
+                <style jsx>
+                  {`
+                    .c{
+                      background-color : #eee !important;
+                    }
+                  `}
+                </style>
                 <div className="font-demi grey-hover mt-4 py-3 px-3">
                   Already a member?{' '}
                   <a href="/login" className="ml-2">
