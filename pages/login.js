@@ -26,8 +26,12 @@ function Login() {
         data : initialState
       })
     }).then(res => res.json())
-    alert(res.msg)
     // form hanldw accorifing to api res
+    if(res.status === 'ok'){
+      alert('login successfull')
+    }else{
+      alert(res.error)
+    }
   }
 
   return (

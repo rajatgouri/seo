@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 
 function Signup() {
-  const initialState = { fullName: '', email: '', password: '', phone: '' }
+  const initialState = { fullName: '', email: '', password: ''}
 
   const [formData, setformData] = useState([
     initialState.fullName = '',
     initialState.email = '',
     initialState.password = '',
-    initialState.phone = ''
+    // initialState.phone = ''
   ])
 
   const handleSubmit = async(e) => {
@@ -15,8 +15,8 @@ function Signup() {
     setformData([
       initialState.fullName = e.target[0].value,
       initialState.email = e.target[1].value,
-      initialState.phone = e.target[2].value,
-      initialState.password = e.target[3].value,
+      // initialState.phone = e.target[2].value,
+      initialState.password = e.target[2].value,
     ])
     const res = await fetch('http://localhost:5000/api/auth/signup',{
       method : 'POST',
@@ -30,11 +30,13 @@ function Signup() {
     // handle page accoring to response
     if(res.status === 'ok'){
       alert('form submited')
+      window.location = "/login"
+    }else{
+      alert(res.msg)
     }
     if(res.status === 'error'){
       alert(res.error)
     }
-    alert(res.msg)
   }
 
   return (
@@ -77,7 +79,7 @@ function Signup() {
                     placeholder="Email"
                   />
                 </div>
-                <div className="input-group mt-4">
+                {/* <div className="input-group mt-4">
                   <input
                     value={formData.phone}
                     onChange={(e) => {
@@ -92,7 +94,7 @@ function Signup() {
                     className="c form-control shadow-lg"
                     placeholder="Phone Number"
                   />
-                </div>
+                </div> */}
                 <div className="input-group mt-4">
                   <input
                     value={formData.password}
