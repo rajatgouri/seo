@@ -214,6 +214,22 @@ select:-webkit-autofill:focus {
   padding:0px 5px;
 }
 
-.roter{
-
+.input{
+  background: transparent;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+}
+.centerDIV{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.ReactModal__Content--after-open{
+  background: transparent !important;
+  border: none !important;
+}
+.ReactModal__Overlay--after-open{
+  background: #020c0f8a !important;
 }

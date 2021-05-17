@@ -9,9 +9,18 @@ export default function SectionContainer({ children }) {
   
   return (
     <>
-      <div className={admin ? "px-10 cusstom" : "cusstom px-1 sm:px-1 md:px-2 mx-auto xl:px-14"}>
+      <div className={admin ? "cutomee" : "cusstom px-1 sm:px-1 md:px-2 mx-auto xl:px-14"}>
         {children}
       </div>
+
+      <style jsx>
+      {`
+      .cutomee{
+        display:block;
+        margin:0 157px;
+      }
+      `}
+      </style>
     </>
   )
 }

@@ -1,12 +1,33 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 
+
 function Login() {
   const initialState = { email: '', password: '' }
-  const [formData, setformData] = useState(initialState)
-  const handleSubmit = (e) => {
+
+  const [formData, setformData] = useState([
+    initialState.email = '',
+    initialState.password = ''
+  ])
+
+  const handleSubmit = async(e) => {
     e.preventDefault()
-    setformData(initialState)
+    console.log(e)
+    setformData([
+      initialState.email = e.target[0].value,
+      initialState.password = e.target[1].value
+    ])
+    const res = await fetch('http://localhost:5000/api/auth/login',{
+      method : 'POST',
+      headers : {
+        'Content-Type':'application/json'
+      },
+      body : JSON.stringify({
+        data : initialState
+      })
+    }).then(res => res.json())
+    alert(res.msg)
+    // form hanldw accorifing to api res
   }
 
   return (
@@ -55,6 +76,7 @@ function Login() {
                   {`
                     .c{
                       background-color : #eee !important;
+                      color:#000 !important;
                     }
                   `}
                 </style>

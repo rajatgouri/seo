@@ -1,13 +1,21 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faPen, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import Modal from '@/components/ModalBlog'
+import React from 'react'
+
 const Blog = () => {
+    const [open,setOpen] = React.useState(true)
     return (
         <>
             <div className="flex justify-between">
                 <h1 className="prose font-black text-3xl">Blog</h1>
-                <button className="bg-dark text-white px-5 py-2 rounded-lg transition hover:bg-indigo-900 focus:outline-none transition hover:text-white">
+                <button className="bg-dark text-white px-5 py-2 rounded-lg transition hover:bg-indigo-900 focus:outline-none transition hover:text-white" onClick={()=>setOpen(!open)}>
                     <FontAwesomeIcon icon={faPlus} color="#fff" /> Create new blog</button>
             </div>
+            {/* model for adding categories */}
+            {
+                open ? true : <Modal width={600} />
+            }
             <div className="flex flex-wrap mx-6 overflow-hidden sm:-mx-1 md:-mx-4 lg:-mx-5 xl:-mx-5">
 
                 <div className="my-6 px-6 py-1 w-1/1 w-full overflow-hidden sm:my-2 sm:px-1 sm:w-1/2 md:my-4 md:px-4 md:w-1/2 lg:my-5 lg:px-5 lg:w-1/2 xl:my-5 xl:px-5 xl:w-1/2">
@@ -51,7 +59,7 @@ const Blog = () => {
                         <div className="w-1/1 overflow-hidden sm:w-full md:w-full lg:w-1/1 xl:w-1/2
                             flex justify-center flex-col items-center">
                             <h2 className="text-2xl font-bold leading-8 tracking-tight my-3">
-                            Collaboration
+                                Collaboration
                             </h2>
                             <p className="text-gray-500 sm:w-full dark:text-gray-400 mb-3 p-2">
                                 <span className="porse font-black text-black">Blog : </span>

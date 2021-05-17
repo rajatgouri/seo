@@ -2,10 +2,39 @@ import React, { useState } from 'react'
 
 function Signup() {
   const initialState = { fullName: '', email: '', password: '', phone: '' }
-  const [formData, setformData] = useState(initialState)
 
-  const handleSubmit = (e) => {
+  const [formData, setformData] = useState([
+    initialState.fullName = '',
+    initialState.email = '',
+    initialState.password = '',
+    initialState.phone = ''
+  ])
+
+  const handleSubmit = async(e) => {
     e.preventDefault()
+    setformData([
+      initialState.fullName = e.target[0].value,
+      initialState.email = e.target[1].value,
+      initialState.phone = e.target[2].value,
+      initialState.password = e.target[3].value,
+    ])
+    const res = await fetch('http://localhost:5000/api/auth/signup',{
+      method : 'POST',
+      headers : {
+        'Content-Type':'Application/json'
+      },
+      body : JSON.stringify({
+        user : initialState
+      })
+    }).then(res => res.json())
+    // handle page accoring to response
+    if(res.status === 'ok'){
+      alert('form submited')
+    }
+    if(res.status === 'error'){
+      alert(res.error)
+    }
+    alert(res.msg)
   }
 
   return (
@@ -84,6 +113,7 @@ function Signup() {
                   {`
                     .c{
                       background-color : #eee !important;
+                      color:#000 !important;
                     }
                   `}
                 </style>
