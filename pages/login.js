@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
+import { ToastContainer , toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 function Login() {
@@ -10,32 +12,38 @@ function Login() {
     initialState.password = ''
   ])
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     console.log(e)
     setformData([
       initialState.email = e.target[0].value,
       initialState.password = e.target[1].value
     ])
-    const res = await fetch('http://localhost:5000/api/auth/login',{
-      method : 'POST',
-      headers : {
-        'Content-Type':'application/json'
+    const res = await fetch('http://localhost:5000/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
       },
-      body : JSON.stringify({
-        data : initialState
+      body: JSON.stringify({
+        data: initialState
       })
     }).then(res => res.json())
     // form hanldw accorifing to api res
-    if(res.status === 'ok'){
-      alert('login successfull')
-    }else{
-      alert(res.error)
+    if (res.status === 'ok') {
+      toast.dark('Login Successfull')
+    } 
+    if(res.status === 'error'){
+      toast.error(res.error)
+    }  
+    else {
+      toast.error('server error try aftersome time')
     }
+   
   }
 
   return (
     <>
+    <ToastContainer/>
       <div className="container my-5">
         <div className="row d-flex justify-content-center">
           <div className="col-lg-8 col-md-8 col-sm-12 col-12">

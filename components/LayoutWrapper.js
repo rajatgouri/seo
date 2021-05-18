@@ -14,7 +14,7 @@ const LayoutWrapper = ({ children }) => {
   // set auth to false to user mode
   // this will change after auth 
 
-  const [auth, setAuth] = useState(false)
+  const [auth, setAuth] = useState(true)
 
 
   return (
@@ -34,7 +34,7 @@ const LayoutWrapper = ({ children }) => {
           </div>
 
         </header>
-        <main className={auth ? 'mb-auto max-w-full h-full c-main' : 'mb-auto max-w-full h-full'}>
+        <main className={auth ? 'mb-auto max-w-full h-full c-main' : 'flex flex-col items-center'}>
           {children}
         </main>
         <style jsx>

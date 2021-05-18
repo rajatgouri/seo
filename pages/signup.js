@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { ToastContainer , toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function Signup() {
   const initialState = { fullName: '', email: '', password: ''}
@@ -29,23 +31,25 @@ function Signup() {
     }).then(res => res.json())
     // handle page accoring to response
     if(res.status === 'ok'){
-      alert('form submited')
+      toast.dark('Account Created')
       window.location = "/login"
     }else{
-      alert(res.msg)
+      toast.error(res.msg)
     }
     if(res.status === 'error'){
-      alert(res.error)
+      toast.error(res.error)
     }
+    toast.error('Server error try after sometime')
   }
 
   return (
     <>
+    <ToastContainer/>
       <div className="container my-5">
         <div className="row d-flex justify-content-center">
           <div className="col-lg-8 col-md-8 col-sm-12 col-12">
             <div className="card">
-              <h4 className="text-center font-bold  mb-4">Create your account</h4>
+              <h4 className="text-center font-bold md:text-2xl mb-4">Create your account</h4>
               <form onSubmit={handleSubmit}>
                 <div className="input-group mt-4">
                   <input
