@@ -24,7 +24,7 @@ const categories = () => {
       .then(res => res.json())
       .then(res => {
         if (res.status === 'ok') {
-          toast.success(e.cat + ' Deleted')
+          toast.info(e.cat + ' Deleted')
         } else {
           toast.error('Server Error')
         }
@@ -54,7 +54,7 @@ const categories = () => {
             return (
               i.data.map(c => {
                 return (
-                  <div class="my-6 px-6 py-1 w-1/1 w-full overflow-hidden sm:my-2 sm:px-1 sm:w-1/2 md:my-4 md:px-4 md:w-1/2 lg:my-5 lg:px-5 lg:w-1/3 xl:my-5 xl:px-5 xl:w-1/4" key={c.id}>
+                  <div className="my-6 px-6 py-1 w-1/1 w-full overflow-hidden sm:my-2 sm:px-1 sm:w-1/2 md:my-4 md:px-4 md:w-1/2 lg:my-5 lg:px-5 lg:w-1/3 xl:my-5 xl:px-5 xl:w-1/4" key={c.id}>
 
 
                     <div className="border-2 border-indigo-200 h-full border-opacity-60 dark:border-gray-700 rounded-md overflow-hidden transition bg-arun">

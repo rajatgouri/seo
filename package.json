@@ -75,5 +75,6 @@
     "*.+(js|jsx|ts|tsx|json|css|md|mdx)": [
       "prettier --write"
     ]
-  }
+  },
+  "proxy":"http://localhost:5000/"
 }

@@ -230,3 +230,10 @@ select:-webkit-autofill:focus {
 .ReactModal__Overlay--after-open{
   background: #020c0f8a !important;
 }
+
+.loading{
+  position: absolute;
+  top:0px;
+  left:0px;
+  background: #020c0f;
+}
