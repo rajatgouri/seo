@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect } from 'react'
 import Modal from 'react-modal'
-import {spiner} from '../data/spinner.gif'
+import { spiner } from '../data/spinner.gif'
+import MultiSelect from "react-multi-select-component";
+
 
 const Model = ({ width }) => {
 
@@ -14,27 +16,47 @@ const Model = ({ width }) => {
     latest: false
   }
 
-
   const [open, setOpen] = useState(true)
   const [cat, setCat] = useState([])
-  const [loading,setLoading]= useState(false)
+  const [loading, setLoading] = useState(false)
 
-  const catApi = () => {
+  const [cate,setCate] = useState([])
+  useEffect(()=>{
     fetch('http://localhost:5000/api/auth/all-cat')
     .then(res => res.json())
     .then(data => {
-      setCat([data])
-      setLoading(true)
+      setCat([data.data])
+
+      cat.map((i)=>{
+        i.map((w)=> setCate([w.cat]))
+      })
+      
     })
-  }
+   
 
-  const time = setTimeout(()=>{
-    catApi()
-  },1)
+  },[])
 
-  setTimeout(()=>{
-    clearTimeout(time)
-  },6)
+
+  // cat.map((i)=>{
+  //   i.map((w)=> setCate([w.cat]))
+  // })
+ 
+  const [selected, setSelected] = useState([]);
+
+
+
+  const options = [
+    { label: "Grapes 🍇", value: "grapes" },
+    { label: "Mango 🥭", value: "mango" },
+    { label: "Strawberry 🍓", value: "strawberry" },
+    { label: "Watermelon 🍉", value: "watermelon" },
+    { label: "Pear 🍐", value: "pear" },
+    { label: "Apple 🍎", value: "apple" },
+    { label: "Tangerine 🍊", value: "tangerine" },
+    { label: "Pineapple 🍍", value: "pineapple" },
+    { label: "Peach 🍑", value: "peach" }
+  ]
+
 
   const [formdata, setformData] = useState([
     initialState.YTLink = '',
@@ -46,7 +68,7 @@ const Model = ({ width }) => {
     initialState.tages = ''
   ])
 
-  const handleBlog = async(e) => {
+  const handleBlog = async (e) => {
     e.preventDefault()
     setformData([
       initialState.date = new Date,
@@ -90,120 +112,97 @@ const Model = ({ width }) => {
             </div>
           </div>
           <form onSubmit={handleBlog}>
-          <div className="flex flex-col px-6 py-1 bg-gray-50">
-            <p className="mb-2 font-semibold text-gray-700">Title</p>
-            <input
-              type="text"
-              name="title"
-              value={formdata.title}
-              onChange={(e) => {
-                setformData({
-                  ...formdata,
-                  [e.target.name]: e.target.value
-                })
-              }}
-              required
-              placeholder="Blog Title"
-              className="p-2 bg-white border border-gray-200 rounded shadow-sm"
-              style={{ color: '#000' }}
-            />
-          </div>
+            <div className="flex flex-col px-6 py-1 bg-gray-50">
+              <p className="mb-2 font-semibold text-gray-700">Title</p>
+              <input
+                type="text"
+                name="title"
+                value={formdata.title}
+                onChange={(e) => {
+                  setformData({
+                    ...formdata,
+                    [e.target.name]: e.target.value
+                  })
+                }}
+                required
+                placeholder="Blog Title"
+                className="p-2 bg-white border border-gray-200 rounded shadow-sm"
+                style={{ color: '#000' }}
+              />
+            </div>
 
-          <div className="flex flex-col px-6 py-1 bg-gray-50">
-            <p className="mb-2 font-semibold text-gray-700">Summary</p>
-            <textarea
-              type="text"
-              name="summary"
-              value={formdata.summary}
-              onChange={(e) => {
-                setformData({
-                  ...formdata,
-                  [e.target.name]: e.target.value
-                })
-              }}
-              placeholder="Content..."
-              className="p-2 bg-white border border-gray-200 rounded shadow-sm"
-              style={{ color: '#000' }}
-            />
-          </div>
+            <div className="flex flex-col px-6 py-1 bg-gray-50">
+              <p className="mb-2 font-semibold text-gray-700">Summary</p>
+              <textarea
+                type="text"
+                name="summary"
+                value={formdata.summary}
+                onChange={(e) => {
+                  setformData({
+                    ...formdata,
+                    [e.target.name]: e.target.value
+                  })
+                }}
+                placeholder="Content..."
+                className="p-2 bg-white border border-gray-200 rounded shadow-sm"
+                style={{ color: '#000' }}
+              />
+            </div>
 
-          <div className="flex flex-col px-6 py-1 bg-gray-50">
-            <p className="mb-2 font-semibold text-gray-700">Video URL <small style={{ float: 'right' }}>copy link from YT*</small></p>
-            <input
-              type="text"
-              name="YTLink"
-              value={formdata.YTLink}
-              onChange={(e) => {
-                setformData({
-                  ...formdata,
-                  [e.target.name]: e.target.value
-                })
-              }}
-              placeholder="Img URL"
-              className="p-2 bg-white border border-gray-200 rounded shadow-sm"
-              style={{ color: '#000' }}
-            />
-          </div>
+            <div className="flex flex-col px-6 py-1 bg-gray-50">
+              <p className="mb-2 font-semibold text-gray-700">Video URL <small style={{ float: 'right' }}>copy link from YT*</small></p>
+              <input
+                type="text"
+                name="YTLink"
+                value={formdata.YTLink}
+                onChange={(e) => {
+                  setformData({
+                    ...formdata,
+                    [e.target.name]: e.target.value
+                  })
+                }}
+                placeholder="Img URL"
+                className="p-2 bg-white border border-gray-200 rounded shadow-sm"
+              />
+            </div>
 
-      
 
-          <div className="flex flex-col px-6 py-1 bg-gray-50">
-            <p className="mb-2 font-semibold text-gray-700">Categoris</p>
-            <select
-              name="tages"
-              value={formdata.tages}
-              onChange={(e) => {
-                setformData({
-                  ...formdata,
-                  [e.target.name]: e.target.value
-                })
-              }}
-              placeholder="Add categories..."
-              className="p-2 bg-white border border-gray-200 rounded shadow-sm relative"
-              style={{ color: '#000' }}
+
+            <div className="flex flex-col px-6 py-1 bg-gray-50 text-black">
+              <p className="mb-2 font-semibold text-gray-700">Categoris</p>
+              <MultiSelect
+                options={cate}
+                value={selected}
+                onChange={setSelected}
+                labelledBy="Select"
+              />
+            </div>
+
+            <div className="flex flex-col px-6 py-1 bg-gray-50">
+              <p className="mb-2 font-semibold text-gray-700">Latest</p>
+              <input
+                type="checkbox"
+                name="latest"
+                value={formdata.latest}
+                onChange={(e) => {
+                  setformData({
+                    ...formdata,
+                    [e.target.name]: e.target.value
+                  })
+                }}
+                className="p-2 bg-white border border-gray-200 rounded shadow-sm"
+                style={{ color: '#000' }}
+              />
+            </div>
+
+            <div
+              className="flex flex-row items-center justify-between p-5 bg-white border-t border-gray-200 rounded-bl-lg rounded-br-lg"
             >
-              {
-                loading ? cat.map(i =>{
-                  return(
-                    i.data.map(c =>{
-                      return(
-                        <option key={c.id} value={c.cat}>{c.cat}</option>
-                      )
-                    })
-                  )
-                }) :  <div className="loading">
-                        <img src={spiner} alt="spiner" />
-                      </div>
-              
-              }
-            </select>
-          </div>  
-
-          <div className="flex flex-col px-6 py-1 bg-gray-50">
-            <p className="mb-2 font-semibold text-gray-700">Latest</p>
-            <input
-              type="checkbox"
-              name="latest"
-              value={formdata.latest}
-              onChange={(e) => {
-                setformData({
-                  ...formdata,
-                  [e.target.name]: e.target.value
-                })
-              }}
-              className="p-2 bg-white border border-gray-200 rounded shadow-sm"
-              style={{ color: '#000' }}
-            />
-          </div>
-
-          <div
-            className="flex flex-row items-center justify-between p-5 bg-white border-t border-gray-200 rounded-bl-lg rounded-br-lg"
-          >
-            <button className="px-4 py-2 w-full text-white font-semibold bg-blue-500 rounded"
-            >
-              Save
+              <button className="px-4 py-2 w-full text-white font-semibold bg-blue-500 rounded"
+              >
+                Save
           </button>
-          </div>
+            </div>
           </form>
         </div>
       </div>

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Model from '@/components/ModalCategories'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
+import auth from '@/components/Auth'
 
 const categories = () => {
   const [open, setOpen] = useState(true)
@@ -31,6 +31,9 @@ const categories = () => {
       })
   }
 
+  const handleEdit = async (e) => {
+    
+  }
 
 
   return (
@@ -88,7 +91,7 @@ const categories = () => {
   )
 }
 
-export default categories
+export default auth(categories)
 
 
 // export const getStaticProps = async () => {

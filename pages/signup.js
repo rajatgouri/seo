@@ -9,7 +9,6 @@ function Signup() {
     initialState.fullName = '',
     initialState.email = '',
     initialState.password = '',
-    // initialState.phone = ''
   ])
 
   const handleSubmit = async(e) => {
@@ -17,7 +16,6 @@ function Signup() {
     setformData([
       initialState.fullName = e.target[0].value,
       initialState.email = e.target[1].value,
-      // initialState.phone = e.target[2].value,
       initialState.password = e.target[2].value,
     ])
     const res = await fetch('http://localhost:5000/api/auth/signup',{

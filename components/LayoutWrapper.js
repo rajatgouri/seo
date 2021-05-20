@@ -9,14 +9,15 @@ import { useState } from 'react'
 import SideNav from './SideNav'
 import '../styles/adminnavbar/dashboard.module.css'
 
-const LayoutWrapper = ({ children }) => {
+const LayoutWrapper = ({ children , auth}) => {
 
   // set auth to false to user mode
   // this will change after auth 
 
-  const [auth, setAuth] = useState(true)
 
 
+
+  
   return (
     <SectionContainer>
       <div>

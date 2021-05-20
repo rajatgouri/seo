@@ -2,8 +2,10 @@ import { useState } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserShield, faBlog, faBars, faAlignLeft, faSignOutAlt } from "@fortawesome/free-solid-svg-icons"
 import Link from '@/components/Link'
+import { useRouter } from 'next/router'
 
 const SideNav = () => {
+    const router = useRouter()
     const [sidebar, setSidebar] = useState(false)
     return (
         <>
@@ -34,8 +36,13 @@ const SideNav = () => {
                             <span className={sidebar ? 'spann-Active' : 'spann transition'}>Categories</span>
                         </Link>
                     </li>
-                    <li className={sidebar ? 'nav-Text-Active' : 'nav-text transition'}>
-                        <Link href="/admin/Logout">
+                    <li className={sidebar ? 'nav-Text-Active' : 'nav-text transition'}
+                    onClick={()=>{
+                        localStorage.removeItem('authToken')
+                        router.push('/')
+                    }}
+                    >
+                        <Link href="/">
                             <FontAwesomeIcon icon={faSignOutAlt} color="#fff" />
                             <span className={sidebar ? 'spann-Active' : 'spann transition'}>Logout</span>
                         </Link>

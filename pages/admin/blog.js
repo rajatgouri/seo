@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faPen, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import Modal from '@/components/ModalBlog'
 import React from 'react'
+import auth from '@/components/Auth'
 
 const Blog = () => {
     const [open,setOpen] = React.useState(true)
@@ -121,4 +122,4 @@ const Blog = () => {
     )
 }
 
-export default Blog
+export default auth(Blog)

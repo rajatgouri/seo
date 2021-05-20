@@ -1,11 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { ToastContainer , toast} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 
 function Login() {
+  const router = useRouter()
+
   const initialState = { email: '', password: '' }
+
+  useEffect(()=>{
+    if(localStorage.getItem('authToken')){
+      router.push('/')
+    }
+  },[])
+
 
   const [formData, setformData] = useState([
     initialState.email = '',
@@ -30,14 +40,14 @@ function Login() {
     }).then(res => res.json())
     // form hanldw accorifing to api res
     if (res.status === 'ok') {
+      localStorage.setItem('authToken',res.token)
       toast.dark('Login Successfull')
+      router.push('/admin/dashboard')
     } 
     if(res.status === 'error'){
       toast.error(res.error)
     }  
-    else {
-      toast.error('server error try aftersome time')
-    }
+   
    
   }
 

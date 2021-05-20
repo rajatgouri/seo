@@ -4,6 +4,8 @@ import { PageSeo } from '@/components/SEO'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faBlog, faFilter, faBoxOpen, faEye} from '@fortawesome/free-solid-svg-icons'
 
+import withAuth from '@/components/Auth'
+
 function Dashboard() {
 
 
@@ -71,4 +73,4 @@ function Dashboard() {
   )
 }
 
-export default Dashboard
+export default withAuth(Dashboard)
