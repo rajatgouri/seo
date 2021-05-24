@@ -248,13 +248,13 @@ select:-webkit-autofill:focus {
 
 /* button for edit button */
 .edit-btn {
-  padding: 7px 50px;
+  padding: 7px 30px;
   background: #03a9f4;
   border-radius: 5px;
   color: #fff;
 }
 .delete-btn {
-  padding: 7px 50px;
+  padding: 7px 30px;
   margin-left: 10px;
   background: #e91e63;
   border-radius: 5px;

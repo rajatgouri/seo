@@ -10,13 +10,13 @@ const ThemeSwitch = () => {
 
   function toggleTheme(){
     setMounted(!mounted)
-    !mounted ? setTheme('light') : setTheme('dark')
+    !mounted ? setTheme('dark') : setTheme('light')
   }
 
   return (
       <div className="flex items-center cursor-pointer ml-1 border p-2 rounded-lg hover:border-blue-400" onClick={toggleTheme}>
         {
-          mounted ? <FontAwesomeIcon icon={faMoon}/> : <FontAwesomeIcon icon={faSun}/>
+          mounted ? <FontAwesomeIcon icon={faSun }/> : <FontAwesomeIcon icon={faMoon}/>
         }
       </div>
   )

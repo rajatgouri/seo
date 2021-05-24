@@ -50,7 +50,8 @@ function Dashboard() {
         Dashboard
       </h1>
 
-      <div className="flex flex-wrap mx-6 overflow-hidden sm:mx-2 md:mx-4 lg:mx-5 xl:mx-5 items-center">
+      <div className="flex flex-wrap mx-6 overflow-hidden sm:mx-2 md:mx-4 lg:mx-5 xl:mx-5 items-center"
+      >
         <div className="my-6 py-1 px-6 w-1/1 w-full overflow-hidden sm:my-2 sm:px-1 sm:w-1/2 md:my-4 md:px-4 md:w-1/2 lg:my-5 lg:px-5 lg:w-1/4 xl:my-5 xl:px-5 xl:w-1/4">
           <div className="bg-gray-100 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-4 border-solid bg-arun rounded-lg border-2 flex justify-around cursor-pointer">
             <FontAwesomeIcon className="w-16 h-16 object-cover text-5xl" color="#fff" icon={faBlog} />
