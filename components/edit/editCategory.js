@@ -1,18 +1,15 @@
-import React, { useState , useEffect} from 'react'
+import React, { useState} from 'react'
 import Modal from 'react-modal'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-const Model = ({ width , id, task, handleReset}) => {
+const EditModel = () => {
 
   const [cat, setCat] = useState()
   const [open, setOpen] = useState(true)
   
-  const [roll, setRoll] = useState()
 
-  if(task === 'edit'){
-    setRoll()
-  }
+  
   
 
   const handleCat = async () => {
@@ -48,7 +45,7 @@ const Model = ({ width , id, task, handleReset}) => {
           <div
             className="flex flex-row justify-between p-6 bg-white border-b border-gray-200 rounded-tl-lg rounded-tr-lg"
           >
-            <p className="font-semibold text-gray-800">Add new category</p>
+            <p className="font-semibold text-gray-800">{}</p>
             <div className="cursor-pointer rounded-full hover:bg-gray-300" onClick={() => setOpen(!open)}>
               <svg
                 className="w-6 h-6 bg-dark rounded-full"
@@ -90,4 +87,5 @@ const Model = ({ width , id, task, handleReset}) => {
   )
 }
 
-export default Model
+export default EditModel
+

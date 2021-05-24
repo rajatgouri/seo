@@ -8,19 +8,35 @@ import { useState, useEffect } from 'react'
 import { SEO } from '@/components/SEO'
 import LayoutWrapper from '@/components/LayoutWrapper'
 import MDXComponents from '@/components/MDXComponents'
+import axios from 'axios'
+import { useRouter } from 'next/router'
+export default function App({ Component, pageProps ,data}) {
 
-export default function App({ Component, pageProps }) {
+  const [auth, setAuth] = useState(false)
+ 
 
-  const [auth,setAuth] = useState(false)
+  const router = useRouter()
 
- useEffect(()=>{
-  const token = localStorage.getItem('authToken')
-  if(token){
-    setAuth(true)
-  } else{
-    setAuth(false)
-  }
- })
+
+
+
+  useEffect(() => {
+    const theme = localStorage.getItem('theme')
+    const token = localStorage.getItem('authToken')
+    if (!theme) {
+      localStorage.setItem('theme', 'dark')
+    }
+    if (token) {
+      setAuth(true)
+      router.push('/admin/dashboard')
+  
+    } else {
+      setAuth(false)
+      localStorage.setItem('theme', 'dark')
+    }
+
+  
+  },[])
 
   return (
     <ThemeProvider attribute="class">
@@ -37,3 +53,5 @@ export default function App({ Component, pageProps }) {
     </ThemeProvider>
   )
 }
+
+

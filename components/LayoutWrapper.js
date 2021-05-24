@@ -4,26 +4,57 @@ import Link from './Link'
 import SectionContainer from './SectionContainer'
 import Footer from './Footer'
 import ThemeSwitch from './ThemeSwitch'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import SideNav from './SideNav'
 import '../styles/adminnavbar/dashboard.module.css'
 
-const LayoutWrapper = ({ children , auth}) => {
+const LayoutWrapper = ({ children, auth }) => {
 
-  // set auth to false to user mode
-  // this will change after auth 
+  const [user, setUser] = useState([])
+  const [token, setToken] = useState('')
+  const [username,setUsername] = useState('')
+
+  useEffect(() => {
+    const token = localStorage.getItem('authToken')
+    setToken(token)
+    const getServerSideProps = async () => {
+      const res = await fetch(`http://localhost:5000/api/auth/dash`, {
+        headers: {
+          'Content-Type': 'application/json',
+          token
+        }
+      })
+      const userr = await res.json()
+
+     setUser([userr.data])
+
+      return {
+        props: {
+          userr
+        }
+      }
+    }
+    getServerSideProps()
+
+    user.map(name=>{
+      setUsername(name.fullName)
+    })
 
 
 
-
+  },[setUser,token])
   
+  
+
+
+
   return (
-    <SectionContainer>
+    <SectionContainer >
       <div>
         <header className={auth ? 'custome-styling-admin-panel' : 'flex items-center justify-between p-10'}>
           {
-            auth ? <NewAdminBar /> : <UserPanel />
+            auth ? <NewAdminBar name={username} /> : <UserPanel />
           }
           <div className="flex items-center text-base leading-5">
             {
@@ -82,10 +113,28 @@ const UserPanel = () => {
 }
 
 
-const NewAdminBar = () => {
+const NewAdminBar = ({ name }) => {
+
+  const [username,setName] = useState('')
+  useEffect(()=>{
+    localStorage.setItem('Na',name)
+    setName(name)
+  },[])
+
+
+
   return (
     <div className="w-full bg-dark pl-3">
       <SideNav />
+      <h1 className="userName">{ username ? username : localStorage.getItem('Na') }</h1>
+      <style jsx>
+        {`
+        .userName{
+          float: right;
+          margin: 13px 52px;
+        }
+        `}
+      </style>
     </div>
   )
 }

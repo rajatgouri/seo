@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { ToastContainer , toast} from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 
 function Login() {
   const router = useRouter()
+  const initialState = {
+    email: '',
+    password: ''
+  }
 
-  const initialState = { email: '', password: '' }
-
-  useEffect(()=>{
-    if(localStorage.getItem('authToken')){
+  useEffect(() => {
+    if (localStorage.getItem('authToken')) {
       router.push('/')
     }
-  },[])
+  }, [])
 
 
   const [formData, setformData] = useState([
@@ -22,9 +23,9 @@ function Login() {
     initialState.password = ''
   ])
 
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(e)
     setformData([
       initialState.email = e.target[0].value,
       initialState.password = e.target[1].value
@@ -40,25 +41,23 @@ function Login() {
     }).then(res => res.json())
     // form hanldw accorifing to api res
     if (res.status === 'ok') {
-      localStorage.setItem('authToken',res.token)
+      localStorage.setItem('authToken', res.token)
       toast.dark('Login Successfull')
-      router.push('/admin/dashboard')
-    } 
-    if(res.status === 'error'){
+      window.location.href = '/admin/dashboard'
+    }
+    if (res.status === 'error') {
       toast.error(res.error)
-    }  
-   
-   
+    }
   }
 
   return (
     <>
-    <ToastContainer/>
+      <ToastContainer />
       <div className="container my-5">
         <div className="row d-flex justify-content-center">
           <div className="col-lg-8 col-md-8 col-sm-12 col-12">
             <div className="card">
-              <h4 className="text-center font-bold  mb-4">
+              <h4 className="text-center font-bold  py-5 text-2xl">
                 Sign in to your account
               </h4>
               <form onSubmit={handleSubmit}>
@@ -75,7 +74,8 @@ function Login() {
                     name="email"
                     type="email"
                     className="c form-control shadow-lg"
-                    placeholder="Email/Number"
+                    autoComplete="off"
+                    placeholder="Email"
                   />
                 </div>
                 <div className="input-group mt-4">
@@ -102,19 +102,9 @@ function Login() {
                     }
                   `}
                 </style>
-                <div className="d-flex justify-content-between">
-                  <Link href="/signup">
-                    <div className="font-demi grey-hover  mt-4 py-3 px-3">
-                      Become a member <span className="ml-2 ">Signup</span>
-                    </div>
-                  </Link>
-                  <p className=" font-demi grey-hover mt-4 py-3 px-3">
-                    Forgot Password
-                  </p>
-                </div>
-                <div className="text-center mt-5">
-                  <button className=" bg-secondaryColor font-demi btn-blue" type="submit">
-                    Signin
+                <div className="text-center py-5 mt-5">
+                  <button className="bg-secondaryColor font-demi btn-blue" type="submit">
+                    Login
                   </button>
                 </div>
               </form>
@@ -127,3 +117,4 @@ function Login() {
 }
 
 export default Login
+
