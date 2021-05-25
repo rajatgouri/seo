@@ -28,7 +28,12 @@ export default function App({ Component, pageProps ,data}) {
     }
     if (token) {
       setAuth(true)
-      router.push('/admin/dashboard')
+      if(window.location.pathname === '/'){
+        router.push('/admin/dashboard')
+      }
+      else{
+        router.push(window.location.pathname)
+      }
   
     } else {
       setAuth(false)

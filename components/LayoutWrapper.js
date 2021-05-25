@@ -10,11 +10,7 @@ import SideNav from './SideNav'
 import '../styles/adminnavbar/dashboard.module.css'
 
 const LayoutWrapper = ({ children, auth }) => {
-
-  const [user, setUser] = useState([])
   const [token, setToken] = useState('')
-  const [username,setUsername] = useState('')
-
   useEffect(() => {
     const token = localStorage.getItem('authToken')
     setToken(token)
@@ -27,8 +23,6 @@ const LayoutWrapper = ({ children, auth }) => {
       })
       const userr = await res.json()
 
-     setUser([userr.data])
-
       return {
         props: {
           userr
@@ -37,15 +31,13 @@ const LayoutWrapper = ({ children, auth }) => {
     }
     getServerSideProps()
 
-    user.map(name=>{
-      setUsername(name.fullName)
-    })
-
-
-
-  },[setUser,token])
   
-  
+
+
+
+  }, [token])
+
+
 
 
 
@@ -54,7 +46,7 @@ const LayoutWrapper = ({ children, auth }) => {
       <div>
         <header className={auth ? 'custome-styling-admin-panel' : 'flex items-center justify-between p-10'}>
           {
-            auth ? <NewAdminBar name={username} /> : <UserPanel />
+            auth ? <NewAdminBar /> : <UserPanel />
           }
           <div className="flex items-center text-base leading-5">
             {
@@ -90,7 +82,9 @@ const LayoutWrapper = ({ children, auth }) => {
              }
              `}
         </style>
-        <Footer />
+        {
+          auth ? false : <Footer />
+        }
       </div>
     </SectionContainer>
   )
@@ -113,29 +107,13 @@ const UserPanel = () => {
 }
 
 
-const NewAdminBar = ({ name }) => {
-
-  const [username,setName] = useState('')
-  useEffect(()=>{
-    localStorage.setItem('Na',name)
-    setName(name)
-  },[])
-
-
-
+const NewAdminBar = () => {
   return (
     <div className="w-full bg-dark pl-3">
       <SideNav />
-      <h1 className="userName">{ username ? username : localStorage.getItem('Na') }</h1>
-      <style jsx>
-        {`
-        .userName{
-          float: right;
-          margin: 13px 52px;
-        }
-        `}
-      </style>
     </div>
   )
 }
+
+
 export default LayoutWrapper

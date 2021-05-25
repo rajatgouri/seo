@@ -4,37 +4,39 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBlog, faFilter, faBoxOpen, faEye } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 import withAuth from '@/components/Auth'
+import axios from 'axios'
 
 function Dashboard() {
 
-  // const [token, setToken] = useState('')
-  // const [user, setUser] = useState([])
+  const [blog, setBlog] = useState()
+  const [category, setCategory] = useState()
+  const [name, setName] = useState()
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem('authToken')
-  //   setToken(token)
-  //   const getServerSideProps = async () => {
-  //     const res = await fetch(`http://localhost:5000/api/auth/dash`, {
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         token
-  //       }
-  //     })
-  //     const user = await res.json()
-  //     setUser([user.data])
-  //     return {
-  //       props: {
-  //         user
-  //       }
-  //     }
-  //   }
-  //   getServerSideProps()
-  // }, [token])
+  useEffect(() => {
+    const fetchPrivateData = async () => {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('authToken')}`
+        }
+      }
+      try {
+        const { data } = await axios('http://localhost:5000/api/auth/dash', config)
+        setBlog(Object.values(data.blog[0])[0])
+        setCategory(Object.values(data.category[0])[0])
+        setName(Object.values(data.user)[0])
 
-
-  // console.log(user.map(name => name.fullName))
-
-
+        if (data.status === 'error') {
+          localStorage.removeItem('authToken')
+          window.location.href = '/'
+        }
+      } catch (error) {
+        localStorage.removeItem('authToken')
+        console.log('please login to view resourse')
+      }
+    }
+    fetchPrivateData()
+  }, [])
 
 
   return (
@@ -44,7 +46,7 @@ function Dashboard() {
         description={`About - ${siteMetadata.author}`}
         url={`${siteMetadata.siteUrl}/admin/dashboard`}
       />
-      {/* grid */}
+      <div className="usrName">{name}</div>
 
       <h1 className="prose font-black text-3xl dark:text-gray-100 w-full" style={{ marginLeft: '3rem' }}>
         Dashboard
@@ -57,7 +59,7 @@ function Dashboard() {
             <FontAwesomeIcon className="w-16 h-16 object-cover text-5xl" color="#fff" icon={faBlog} />
             <div className="flex flex-col justify-center">
               <p className="text-gray-100 dark:text-gray-100 font-semibold">Blog</p>
-              <p className="text-black dark:text-gray-100 text-justify font-semibold">10</p>
+              <p className="text-black dark:text-gray-100 text-justify font-semibold">{blog}</p>
             </div>
           </div>
 
@@ -70,7 +72,7 @@ function Dashboard() {
             <FontAwesomeIcon className="w-16 h-16 object-cover text-5xl" color="#fff" icon={faFilter} />
             <div className="flex flex-col justify-center">
               <p className="text-gray-900 dark:text-gray-100 font-semibold">Categories</p>
-              <p className="text-black dark:text-gray-100 text-justify font-semibold">200</p>
+              <p className="text-black dark:text-gray-100 text-justify font-semibold">{category}</p>
             </div>
           </div>
 
@@ -103,4 +105,3 @@ function Dashboard() {
 }
 
 export default withAuth(Dashboard)
-

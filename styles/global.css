@@ -266,3 +266,22 @@ select:-webkit-autofill:focus {
 .delete-btn:hover {
   box-shadow: 0px 1px 0px 4px #e91e63, 1px 0px 20px 0px #e91e63;
 }
+
+
+/* input of login */
+.login_input{
+  display: block;
+  margin: 0 auto;
+  width: 600px;
+}
+
+/* username */
+.usrName{
+  position: absolute;
+  top: 25px;
+  right: 40px;
+  color: #fff;
+  text-transform: capitalize;
+  font-weight: 900;
+  font-size: 20px;
+}

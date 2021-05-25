@@ -45,7 +45,7 @@ const SideNav = () => {
                         window.location.href = '/'
                     }}
                     >
-                            <Link>
+                            <Link href="/">
                             <FontAwesomeIcon icon={faSignOutAlt} color="#fff" />
                             <span className={sidebar ? 'spann-Active' : 'spann transition'}>Logout</span>
                             </Link>

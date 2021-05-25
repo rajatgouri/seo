@@ -5,8 +5,10 @@ const withAuth = (WrappedComponent) =>{
     return(props)=>{
         if(typeof window !== 'undefined'){
             const router = useRouter()
-
             const accessToken = localStorage.getItem('authToken')
+
+
+            console.log(accessToken)
 
             if(!accessToken){
                 router.replace('/')

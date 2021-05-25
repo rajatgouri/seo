@@ -73,7 +73,7 @@ function Login() {
                     }}
                     name="email"
                     type="email"
-                    className="c form-control shadow-lg"
+                    className="c form-control shadow-lg login_input"
                     autoComplete="off"
                     placeholder="Email"
                   />
@@ -90,7 +90,7 @@ function Login() {
                     }}
                     name="password"
                     type="password"
-                    className="c form-control shadow-lg"
+                    className="c form-control shadow-lg login_input"
                     placeholder="Password"
                   />
                 </div>
