@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import Modal from 'react-modal'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
+import API from '../../utils/API'
 const EditModel = ({ width, handleReset, category }) => {
 
-  const [cat, setCat] = useState('')
+  const [cat, setCat] = useState(category.cat)
   const [open, setOpen] = useState(true)
+
 
 
   const handleChange = async () => {
@@ -16,24 +17,28 @@ const EditModel = ({ width, handleReset, category }) => {
     if(cat === category.cat){
       toast.error("can't change same category")
     }
-    const res = await fetch(`http://localhost:5000/api/category/updateCategory/${category.id}`, {
+
+    API({
+      url : `category/updateCategory/${category.id}`,
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('authToken')}`
       },
-      body: JSON.stringify({
+      data: {
         cat
-      })
-    }).then(res => res.json())
-    if (res.status === 'ok') {
-      setCat('')
-      setOpen(!open)
-      handleReset()
-      toast.info("new " + cat + " is saved")
-    } else {
+      }
+    }).then(res => {
+      if (res.data.status === 'ok') {
+        setCat('')
+        setOpen(!open)
+        handleReset()
+        toast.info("new " + cat + " is saved")
+      }
+    })
+    .catch(err =>{
       toast.error('server error')
-    }
+    })
   }
 
 
@@ -65,7 +70,7 @@ const EditModel = ({ width, handleReset, category }) => {
             </div>
           </div>
           <div className="flex flex-col px-6 py-5 bg-gray-50">
-            <pre className="text-center text-gray-900" style={{ fontSize: "12px" }}>Change title {category.cat} to <span >{cat}</span></pre>
+            {/* <pre className="text-center text-gray-900" style={{ fontSize: "12px" }}>Change title {category.cat} to <span >{cat}</span></pre> */}
             <p className="mb-2 font-semibold text-gray-700">Title</p>
             <input
               type="text"

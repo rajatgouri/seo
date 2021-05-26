@@ -250,7 +250,7 @@ const Blog = () => {
     const [open, setOpen] = useState(false)
     const [blog, setBlog] = useState([])
     const [token, setToken] = useState()
-    const [id,setId] = useState()
+    const [id, setId] = useState(null)
 
     const getAllBlog = async () => {
 
@@ -265,7 +265,6 @@ const Blog = () => {
 
         })
             .then(response => {
-                console.log(response)
                 setBlog(response.data.data)
             })
             .catch(err => {
@@ -282,14 +281,16 @@ const Blog = () => {
 
     const handleDeleteBlog = async (e) => {
         API({
-            method: 'GET',
+            method: 'DELETE',
             url: 'blogs/deleteById/' + e.id,
-            Authorization: `Bearer ${localStorage.getItem('authToken')}`
-
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('authToken')}`
+            }
         })
             .then(response => {
 
-                if (response.status === 'ok') {
+                if (response.data.status === 'ok') {
                     toast.info(e.title + 'be patient deleting query is processing...')
                     getAllBlog()
                 } else {
@@ -305,12 +306,13 @@ const Blog = () => {
     }
 
     const handleSubmit = () => {
+        setId(null)
         getAllBlog()
     }
 
     const handleEdit = (c) => {
         setOpen(true)
-        setId(c)
+        setId(c.id)
     }
 
     return (
@@ -323,11 +325,15 @@ const Blog = () => {
                 <button
                     className="px-4 py-2 text-white font-semibold bg-blue-500 rounded"
                     type='button'
-                    onClick={() => setOpen(true)}
+                    onClick={() => {
+                        setOpen(true)
+                        setId(null)
+                        }
+                    }
                 >
                     <FontAwesomeIcon icon={faPlus} color="#fff" />
-                Create New Blog
-              </button>
+                    Create New Blog
+                </button>
             </div>
 
             {
@@ -338,7 +344,7 @@ const Blog = () => {
                             blog.map(c => {
 
                                 return (
-                                    <div style={{
+                                    <div key={c.id} style={{
                                         minHeight: '300px'
                                     }} className="my-6 px-6 py-1 w-1/1 w-full overflow-hidden sm:my-2 sm:px-1 sm:w-1/1 md:my-4 md:px-4 md:w-1/2 lg:my-5 lg:px-5 lg:w-1/2 xl:my-5 xl:px-5 xl:w-1/2">
                                         <div className="flex flex-wrap border-2 border-gray-200 overflow-hidden transition bg-arun h-full" key={c.id}>
@@ -381,7 +387,7 @@ const Blog = () => {
                     </div>
 
                 ) : (
-                    <div style={{minHeight: '500px'}}>
+                    <div style={{ minHeight: '500px' }}>
                         <style jsx>
                             {`
                             svg{

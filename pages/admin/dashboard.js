@@ -4,7 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBlog, faFilter, faBoxOpen, faEye } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 import withAuth from '@/components/Auth'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import axios from 'axios'
+
+import API from '../../utils/API'
 
 function Dashboard() {
 
@@ -14,25 +18,26 @@ function Dashboard() {
 
   useEffect(() => {
     const fetchPrivateData = async () => {
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('authToken')}`
-        }
-      }
       try {
-        const { data } = await axios('http://localhost:5000/api/auth/dash', config)
-        setBlog(Object.values(data.blog[0])[0])
-        setCategory(Object.values(data.category[0])[0])
-        setName(Object.values(data.user)[0])
-
-        if (data.status === 'error') {
-          localStorage.removeItem('authToken')
-          window.location.href = '/'
-        }
+        API({
+          url: '/auth/dash',
+          headers : {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('authToken')}`
+          }
+        }).then(res =>{
+          if (res.data.status === 'error') {
+            toast.warning(res.data.error)
+            localStorage.removeItem('authToken')
+            window.location.href = '/'
+          }
+          setBlog(Object.values(res.data.blog[0])[0])
+          setCategory(Object.values(res.data.category[0])[0])
+          setName(Object.values(res.data.user)[0])
+        })      
       } catch (error) {
         localStorage.removeItem('authToken')
-        console.log('please login to view resourse')
+        toast.warning('please login to view resourse')
       }
     }
     fetchPrivateData()
@@ -41,6 +46,7 @@ function Dashboard() {
 
   return (
     <>
+    <ToastContainer/>
       <PageSeo
         title={`Admin - ${siteMetadata.author}`}
         description={`About - ${siteMetadata.author}`}

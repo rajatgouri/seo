@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
+import API from '../utils/API'
 
 function Login() {
   const router = useRouter()
@@ -30,32 +30,39 @@ function Login() {
       initialState.email = e.target[0].value,
       initialState.password = e.target[1].value
     ])
-    const res = await fetch('http://localhost:5000/api/auth/login', {
+
+    API({
+      url: "auth/login",
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
+      data: {
         data: initialState
-      })
-    }).then(res => res.json())
-    // form hanldw accorifing to api res
-    if (res.status === 'ok') {
-      localStorage.setItem('authToken', res.token)
-      toast.dark('Login Successfull')
-      window.location.href = '/admin/dashboard'
-    }
-    if (res.status === 'error') {
-      toast.error(res.error)
-    }
+      }
+    }).then(res => {
+      // res.json()
+      console.log(res)
+      if (res.data.status === 'ok') {
+        localStorage.setItem('authToken', res.data.token)
+        toast.dark('Login Successfull')
+        window.location.href = '/admin/dashboard'
+      }
+    }).catch(err =>{
+      toast.error(err)
+    })
+
+
   }
 
   return (
     <>
       <ToastContainer />
       <div className="container my-5">
-        <div className="row d-flex justify-content-center">
-          <div className="col-lg-8 col-md-8 col-sm-12 col-12">
+        <div className="row d-flex justify-content-center"
+        style={{padding:'0px 96px'}}
+        >
+          <div className="col-lg-8 col-md-8 col-sm-12 col-24">
             <div className="card">
               <h4 className="text-center font-bold  py-5 text-2xl">
                 Sign in to your account
@@ -73,7 +80,7 @@ function Login() {
                     }}
                     name="email"
                     type="email"
-                    className="c form-control shadow-lg login_input"
+                    className="c form-control shadow-lg "
                     autoComplete="off"
                     placeholder="Email"
                   />
@@ -90,7 +97,7 @@ function Login() {
                     }}
                     name="password"
                     type="password"
-                    className="c form-control shadow-lg login_input"
+                    className="c form-control shadow-lg "
                     placeholder="Password"
                   />
                 </div>

@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-import { ToastContainer , toast} from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
+import API from '../utils/API'
+
 function Signup() {
-  const initialState = { fullName: '', email: '', password: ''}
+  const initialState = { fullName: '', email: '', password: '' }
 
   const [formData, setformData] = useState([
     initialState.fullName = '',
@@ -11,30 +13,41 @@ function Signup() {
     initialState.password = '',
   ])
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setformData([
       initialState.fullName = e.target[0].value,
       initialState.email = e.target[1].value,
       initialState.password = e.target[2].value,
     ])
-    const res = await fetch('http://localhost:5000/api/auth/signup',{
-      method : 'POST',
-      headers : {
-        'Content-Type':'Application/json'
+    // const res = await fetch('http://localhost:5000/api/auth/signup',{
+    //   method : 'POST',
+    //   headers : {
+    //     'Content-Type':'Application/json'
+    //   },
+    //   body : JSON.stringify({
+    //     user : initialState
+    //   })
+    // }).then(res => res.json())
+    API({
+      url: 'auth/signup',
+      method: 'post',
+      headers: {
+        'Content-Type': 'Application/json'
       },
-      body : JSON.stringify({
-        user : initialState
+      body: JSON.stringify({
+        user: initialState
       })
     }).then(res => res.json())
+
     // handle page accoring to response
-    if(res.status === 'ok'){
+    if (res.status === 'ok') {
       toast.dark('Account Created')
       window.location = "/login"
-    }else{
+    } else {
       toast.error(res.msg)
     }
-    if(res.status === 'error'){
+    if (res.status === 'error') {
       toast.error(res.error)
     }
     toast.error('Server error try after sometime')
@@ -42,9 +55,11 @@ function Signup() {
 
   return (
     <>
-    <ToastContainer/>
+      <ToastContainer />
       <div className="container my-5">
-        <div className="row d-flex justify-content-center">
+        <div className="row d-flex justify-content-center"
+        style={{padding:'0px 96px'}}
+        >
           <div className="col-lg-8 col-md-8 col-sm-12 col-12">
             <div className="card">
               <h4 className="text-center font-bold md:text-2xl mb-4">Create your account</h4>

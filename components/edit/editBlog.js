@@ -80,12 +80,6 @@ const Model = ({ handleSubmit }) => {
   const handleBlog = async (e) => {
     e.preventDefault()
 
-    const preValue = {
-      title = e.tile,
-      summary = e.summary,
-
-    }
-
     API({
       method: 'PUT',
       url: '/blogs/updateBlog/' + e.id,
@@ -101,7 +95,6 @@ const Model = ({ handleSubmit }) => {
       }
     })
       .then(response => {
-
         console.log(response.data.data)
         toast.success('Blog saved')
         handleSubmit()

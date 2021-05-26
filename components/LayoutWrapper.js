@@ -5,7 +5,7 @@ import SectionContainer from './SectionContainer'
 import Footer from './Footer'
 import ThemeSwitch from './ThemeSwitch'
 import { useState, useEffect } from 'react'
-
+import API from '../utils/API'
 import SideNav from './SideNav'
 import '../styles/adminnavbar/dashboard.module.css'
 
@@ -15,26 +15,17 @@ const LayoutWrapper = ({ children, auth }) => {
     const token = localStorage.getItem('authToken')
     setToken(token)
     const getServerSideProps = async () => {
-      const res = await fetch(`http://localhost:5000/api/auth/dash`, {
+      API({
+        url: 'auth/dash',
         headers: {
           'Content-Type': 'application/json',
-          token
+          Authorization: `Bearer ${localStorage.getItem('authToken')}`
         }
+      }).then(res => {
+        console.log(res)
       })
-      const userr = await res.json()
 
-      return {
-        props: {
-          userr
-        }
-      }
     }
-    getServerSideProps()
-
-  
-
-
-
   }, [token])
 
 
