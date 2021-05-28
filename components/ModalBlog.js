@@ -30,25 +30,30 @@ const Model = ({ open, handleSubmit, close, id }) => {
   const [latest, setLatest] = useState(true)
   const [selected, setSelected] = useState([]);
   const [categories, setCategories] = useState();
-
+  const [hide, setHide] = useState(false);
 
   const fetchBlogById = async()=>{
-    console.log(id)
+
     API({
-      method: 'POST',
-      url: `/blogs/getBlogbyID/${id}`,
+      method: 'GET',
+      url: `/blogs/getById/${id}`,
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('authToken')}`
       }
+    }).then((response) => { 
+      console.log(response)
+      setTitle(response.data.blog.title)
+      setSummary(response.data.blog.summary)
+      setSelected(response.data.blog.category)
+      setUrl(response.data.blog.url)
+      setLatest(response.data.blog.latest)
+
+    }).catch(err => {
+      console.log(err)
     })
   }
-  console.log('fetchBlogById',id)
-  fetchBlogById()
 
-  useEffect(() => {
-    // console.log(editorRef.current?.editor.core);
-  }, []);
 
   useEffect(() => {
     API({
@@ -74,50 +79,36 @@ const Model = ({ open, handleSubmit, close, id }) => {
 
 
   useEffect(() => {
-    console.log('outside',id)
-    console.log(typeof id)
-    console.log(id === undefined)
-    console.log(id !== undefined)
+    
+    console.log('hi')
     if (typeof id === 'number') {
-      console.log('if')
-      setTitle(id?.id?.title)
-      setSummary(id?.id?.summary)
-      setSelected(id?.id?.category)
-      setLatest(id?.id?.latest)
-      setUrl(id?.id?.url)
-    }
-    else{
-      console.log('else')
-      // fetchBlogById()
-      // console.log('from else part',id)
-      // setTitle(id.id?.title)
-      // setSummary(id.id?.summary)
-      // setSelected(id.id?.category)
-      // setLatest(id.id?.latest)
-      // setUrl(id.id?.url)
-    }
-
-  }, [])
+      fetchBlogById()
+    }   
+  }, [id])
 
 
-  const Reset = () => {
+
+
+  const handleClose = () => {
     setTitle('')
     setSummary('')
+    close()
     setSelected('')
-    setLatest('')
+    setLatest(false)
     setUrl('')
+    setHide(false)
   }
 
 
   const handleBlog = async () => {
 
-
-    let url = id ? `/blogs/updateBlog/${id.id}` : '/blogs/blog'
+    let requestUrl = id ? `/blogs/updateBlog/${id}` : '/blogs/blog'
     let method = id ? 'PUT' : 'POST'
-
+    console.log("From Latest - ",latest);
+    console.log(url)
     API({
       method,
-      url,
+      url:requestUrl,
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('authToken')}`
@@ -127,21 +118,25 @@ const Model = ({ open, handleSubmit, close, id }) => {
         summary,
         selected,
         latest,
-        url
+        url,
       }
     })
       .then(response => {
         if (response.data.status === 'error') {
           toast.warn(response.data.error)
         }
+
         handleSubmit()
-        close()
-        Reset()
+        setHide(true)
+        handleClose()
+        
       })
       .catch(err => {
         toast.error(err.response.data.error)
       })
   }
+
+
 
   return (
 
@@ -164,8 +159,7 @@ const Model = ({ open, handleSubmit, close, id }) => {
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => {
-                      close()
-                      Reset()
+                      handleClose()
                     }}
                   >
                     <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
@@ -195,7 +189,7 @@ const Model = ({ open, handleSubmit, close, id }) => {
 
                   <div className="flex flex-col px-6 py-1 bg-gray-50">
                     <p className="mb-2 font-semibold text-gray-700">Summary</p>
-                    <SunEditor
+                    { !hide ? <SunEditor
                       setOptions={setOptions}
                       height="100%"
                       name="summary"
@@ -203,7 +197,7 @@ const Model = ({ open, handleSubmit, close, id }) => {
                       setContents={summary}
                       onChange={e => setSummary(e)}
                       placeholder="Content..."
-                    />
+                    /> : null}
                   </div>
 
                   <div className="flex flex-col px-6 py-1 bg-gray-50" >
@@ -248,7 +242,9 @@ const Model = ({ open, handleSubmit, close, id }) => {
                     <input
                       type="checkbox"
                       name="latest"
-
+                      checked={latest}
+                      value={latest}
+                      onChange={(e)=> setLatest(e.target.checked)}
                       className="p-2 bg-white border border-gray-200 rounded shadow-sm"
                       style={{ color: '#000' }}
                     />
@@ -261,7 +257,7 @@ const Model = ({ open, handleSubmit, close, id }) => {
                   >
                     <button className="px-4 py-2  font-semibold border  rounded"
                       type='button'
-                      onClick={close}
+                      onClick={handleClose}
                     >
                       close
                     </button>

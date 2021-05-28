@@ -35,24 +35,20 @@ function Signup() {
       headers: {
         'Content-Type': 'Application/json'
       },
-      body: JSON.stringify({
+      data: {
         user: initialState
+      }
+    }).then(res => 
+      {
+        toast.dark('Account Created')
+        window.location = "/login"
       })
-    }).then(res => res.json())
+      .catch(err => {
+        toast.error("Can't Signup!")
+      })
 
     // handle page accoring to response
-    if (res.status === 'ok') {
-      toast.dark('Account Created')
-      window.location = "/login"
-    } else {
-      toast.error(res.msg)
-    }
-    if (res.status === 'error') {
-      toast.error(res.error)
-    }
-    toast.error('Server error try after sometime')
   }
-
   return (
     <>
       <ToastContainer />

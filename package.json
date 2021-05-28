@@ -6,7 +6,7 @@
     "start": "next-remote-watch ./data",
     "dev": "next dev",
     "build": "next build && node ./scripts/generate-sitemap",
-    "serve": "next start",
+    "serve": "next start -p 9750",
     "analyze": "env ANALYZE=true next build",
     "prepare": "husky install"
   },
@@ -26,6 +26,7 @@
     "autoprefixer": "^10.2.5",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.0",
+    "fs": "0.0.1-security",
     "gray-matter": "^4.0.2",
     "image-size": "0.9.7",
     "multiselect-react-dropdown": "^1.6.11",
